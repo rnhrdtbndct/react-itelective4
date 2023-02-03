@@ -14,7 +14,7 @@ function App() {
           )
         })}
         <div className='text'>
-          <h3>Total: {total}</h3>
+          <h3>TOTAL: {total}</h3>
         </div>
     </div>
   );

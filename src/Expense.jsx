@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 
 const Expense = (props) => {
     const handleClick = (e) => {
-        alert(props.name + " is priced " + props.price)
+        alert("You clicked " + props.name + " - Php " + props.price)
     }
 
     return (
