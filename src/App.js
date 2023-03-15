@@ -1,21 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
-import Expense from './Expense';
-import expenses from './data';
+import Post from './components/Post';
+import { useEffect, useState } from 'react';
 
-const total = expenses.reduce((total, value) => {
-  return total+value.price;}, 0)
 function App() {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        return response.json()
+      }).then(data => {
+        setPosts(data)
+      })
+  }, [])
+
   return (
     <div>
-      {expenses.map((expense) => {
-        return(
-          <Expense key={expense.id} name={expense.name} price={expense.price}/>
-          )
-        })}
-        <div className='text'>
-          <h3>TOTAL: {total}</h3>
-        </div>
+      <div>
+        {posts.map(post => (
+          <Post key={post.id} post={post.title} body={post.body}/>
+        ))
+        }
+      </div>
     </div>
   );
 }
